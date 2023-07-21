@@ -6,6 +6,7 @@
 html {
   font-size: 0.5em;
   background: #2f2f2f;
+  font-family: sans-serif;
 }
 .soundboard {
   background-image: url(./Img/Diced20.png);
@@ -14,11 +15,21 @@ html {
 
   background-position: center;
 }
-body {
+
+a:link {
+  color: #ffbf00;
+}
+h2 {
+  color: #ffbf00;
+
+  font-size: 4em;
+  font-family: Blacksword;
 }
 
-p {
+li {
+  color: #ffbf00;
   font-size: 2em;
+  margin: 0.5em;
 }
 h1 {
   color: #ffbf00;
@@ -147,14 +158,95 @@ kbd {
   letter-spacing: 0.1rem;
   color: #ffc600;
 }
-
+/*
 iframe {
-  display: block; /* iframes are inline by default */
-  border: none; /* Reset default border */
-  height: 100vh; /* Viewport-relative units */
+  display: block; // iframes are inline by default 
+  border: none; // Reset default border 
+  height: 100vh; // Viewport-relative units 
   width: 100vw;
   margin-left: 30%;
+}*/
+
+.grid_maptools {
+  display: grid;
+
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+  gap: 0px;
+  height: 100%;
 }
+
+#tool_gratis_title {
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  grid-row-end: 2;
+  grid-column-end: 3;
+}
+#tool_pagamento_title {
+  grid-row-start: 1;
+  grid-column-start: 4;
+
+  grid-row-end: 2;
+  grid-column-end: 6;
+}
+#tool_gratis_list {
+  grid-row-start: 2;
+  grid-column-start: 1;
+
+  grid-row-end: 3;
+  grid-column-end: 3;
+  justify-self: left;
+}
+#tool_pagamento_list {
+  grid-row-start: 2;
+  grid-column-start: 4;
+  justify-self: left;
+
+  grid-row-end: 3;
+  grid-column-end: 6;
+}
+
+.grid_world_building {
+  display: grid;
+
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+  gap: 0px;
+  height: 100%;
+}
+
+#world_building_gratis {
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  grid-row-end: 2;
+  grid-column-end: 3;
+}
+#world_building_pagamento {
+  grid-row-start: 1;
+  grid-column-start: 4;
+
+  grid-row-end: 2;
+  grid-column-end: 6;
+}
+#world_building_gratis_tools {
+  grid-row-start: 2;
+  grid-column-start: 1;
+
+  grid-row-end: 3;
+  grid-column-end: 3;
+}
+#world_building_pagamento_list {
+  grid-row-start: 2;
+  grid-column-start: 4;
+
+  grid-row-end: 3;
+  grid-column-end: 6;
+}
+
 @page {
   size: 7in 9.25in;
   margin: 27mm 16mm 27mm 16mm;

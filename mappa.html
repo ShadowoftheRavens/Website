@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="./Mappa_interattiva/style.css" />
+    <link rel="stylesheet" href="main_style.css" />
+
+    <link
+      rel="stylesheet"
+      href="./Mappa_interattiva/Scripts/leaflet/leaflet.css" />
+
+    <script src="./Mappa_interattiva/Scripts/leaflet/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <title>Mappa</title>
+  </head>
+  <header>
+    <nav class="navbar">
+      <a href="index.htm">Home</a>
+      <a href="https://www.campfirewriting.com/explore/Nidora" target="_blank"
+        >Wiki</a
+      >
+    </nav>
+  </header>
+  <body>
+    <div id="map"></div>
+    <script type="text/javascript">
+      //map delimiters
+      var mapSW = [610, 2863],
+        mapNE = [3486, 1237];
+      map;
+      //declare map
+      var map = L.map("map").setView([0, 0], 1);
+
+      //reference tiles
+      L.tileLayer("./Mappa_interattiva/mappa del mondo/{z}/{x}/{y}.png", {
+        minZoom: 2,
+        maxZoom: 4,
+        continuosWorld: false,
+        noWrap: true,
+        /*  crs: L.CRS.Simple, // simple picel oriented */
+      }).addTo(map);
+
+      map.setMaxBounds(
+        new L.LatLngBounds(
+          map.unproject(mapSW, map.getMaxZoom()),
+          map.unproject(mapNE, map.getMaxZoom())
+        )
+      );
+
+      // icons
+      var Citys = L.icon({
+        iconUrl: "./Scripts/leaflet/images/Marker_City.png",
+        iconSize: [25, 40],
+        iconAnchor: [22, 39],
+        popupAnchor: [-9, -32],
+        shadowUrl: "Scripts/leaflet/images/marker-shadow.png",
+        shadowSize: [68, 95],
+        shadowAnchor: [22, 94],
+      });
+
+      /* //Coordinate Finder
+      var PointFinder = L.marker([40, 1], {
+        draggable: true,
+      }).addTo(map);
+      PointFinder.bindPopup("Lat Lng Marker").openPopup();
+      PointFinder.on("dragend", function (e) {
+        PointFinder.getPopup()
+          .setContent(PointFinder.getLatLng().toString())
+          .openOn(map);
+      }); */
+      //maker popups
+      var city1 = L.marker([0, 0], { icon: Citys });
+      city1.bindPopup("<a href =https://www.google.com/> google </a>");
+
+      var city2 = L.marker([30, 0]);
+      city2.bindPopup("zr");
+
+      var hero = L.marker([-50, 0]);
+      hero.bindPopup("<b> Hero </b>");
+
+      //eldoria Marker
+      var eldoria = L.marker([30, 96]);
+      eldoria.bindPopup("<u><b>Regno di <br> Eldoria");
+
+      var renkthor = L.marker([38.994773, 89.296875]);
+      renkthor.bindPopup("<b>Renkthor");
+
+      var thokar = L.marker([26.273609, 70.400391]);
+      thokar.bindPopup("<b>Thokar");
+
+      var rivendell = L.marker([29.842582, 110.126953]);
+      rivendell.bindPopup("<b>Rivendell");
+
+      var limberch = L.marker([21.603134, 117.773438]);
+      limberch.bindPopup("<b>Limberch");
+
+      var citta_dei_venti = L.marker([21.69537, 107.666016]);
+      citta_dei_venti.bindPopup("<b>Città de venti");
+
+      var lireide = L.marker([19.627748, 95.273438]);
+      lireide.bindPopup("<b>Lireide");
+
+      var ohrn = L.marker([25.95519, 84.902344]);
+      ohrn.bindPopup("<b>Ohrn<b>");
+
+      var slyvaria = L.marker([31.281415, 84.990234]);
+      slyvaria.bindPopup("<b>Slyvaria");
+
+      //Suzdal
+
+      // Elberethion
+
+      // Terre di Nyland
+
+      //Meath
+
+      //Kano
+
+      //Idrisid
+
+      // Goktur
+
+      // Thufrim
+
+      // Ethil
+
+      // Manktha
+
+      // Isilra
+
+      // Literra
+
+      //layer groups
+      var lg_City = L.layerGroup([city1, city2, eldoria]);
+
+      var regno_eldora = L.layerGroup([
+        eldoria,
+        renkthor,
+        thokar,
+        rivendell,
+        limberch,
+        citta_dei_venti,
+        lireide,
+        ohrn,
+        slyvaria,
+      ]);
+
+      var regno_suzdal = L.layerGroup([]);
+
+      var regno_elberethion = L.layerGroup([]);
+
+      var terre_di_nyland = L.layerGroup([]);
+
+      var regno_meath = L.layerGroup([]);
+
+      var regno_kano = L.layerGroup([]);
+
+      var lg_heros = L.layerGroup([hero]);
+
+      var regno_idrisid = L.layerGroup([]);
+
+      var regno_goktur = L.layerGroup([]);
+
+      var regno_thufrim = L.layerGroup([]);
+
+      var regno_ethil = L.layerGroup([]);
+
+      var regno_manktha = L.layerGroup([]);
+
+      var regno_isilra = L.layerGroup([]);
+
+      var regno_literra = L.layerGroup([]);
+
+      var regno_capitali = L.layerGroup([]);
+
+      var overlays = {
+        "Capitali Regni": regno_capitali,
+        Eldoria: regno_eldora,
+        Suzdal: regno_suzdal,
+        Elberethion: regno_elberethion,
+        "Terre di Nyland": terre_di_nyland,
+        Meath: regno_meath,
+        Kano: regno_kano,
+        Idrisid: regno_idrisid,
+        Goktur: regno_goktur,
+        Thufrim: regno_thufrim,
+        Ethil: regno_ethil,
+        Manktha: regno_manktha,
+        Isilra: regno_isilra,
+        Literra: regno_literra,
+      };
+
+      //add Layer control
+      L.control.layers(null, overlays).addTo(map);
+    </script>
+  </body>
+</html>
