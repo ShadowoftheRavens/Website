@@ -1,6 +1,6 @@
 //navbar
 $(function navbar() {
-  $("#nav-placeholder").load("navigation.html");
+  $("#nav-placeholder").load("./navigation.html");
 });
 
 //soundbar
